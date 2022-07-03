@@ -1,0 +1,33 @@
+{
+  "name": "searchbardemo",
+  "version": "1.0.0",
+  "description": "A search bar app to auto-complete searches of places in US",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node main.js",
+    "dev": "supervisor  main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bcpy1314/SearchBarWithMap.git"
+  },
+  "keywords": [
+    "searchbar"
+  ],
+  "author": "Yue Pan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bcpy1314/SearchBarWithMap/issues"
+  },
+  "homepage": "https://github.com/bcpy1314/SearchBarWithMap#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-graphql": "^0.12.0",
+    "html-webpack-plugin": "^5.5.0",
+    "supervisor": "^0.12.0",
+    "webpack-dev-middleware": "^5.3.3"
+  }
+}
