@@ -1,12 +1,14 @@
 <template>
+  <label for="input">Search City </label>
   <input
+    id="inputbar"
     type="text"
     v-model="input"
     placeholder="Search places..."
     @input="getData"
   />
   <div class="item place" v-for="place in items" :key="place">
-    <p @click="click($event)">{{ place }}</p>
+    <p class="option" @click="click($event)">{{ place }}</p>
   </div>
 </template>
 
@@ -17,7 +19,7 @@ export default {
   data() {
     return {
       input: "",
-      items: [1, 2, 3],
+      items: [],
     };
   },
 
@@ -45,7 +47,28 @@ export default {
       const place = event.target.innerHTML;
       console.log(place);
       this.$emit("CustomEventInputChanged", place);
+      this.items = [];
+      this.input = place;
     },
   },
 };
 </script>
+<style>
+.place {
+  border: solid 1px;
+  margin: auto;
+  width: 400px;
+  text-align: center;
+}
+
+.place p {
+  font-size: 10px;
+}
+
+.place:hover {
+  background: yellow;
+}
+
+.option {
+}
+</style>

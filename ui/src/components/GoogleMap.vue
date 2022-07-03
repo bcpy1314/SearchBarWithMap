@@ -16,12 +16,20 @@ import { GoogleMap, Marker } from "vue3-google-map";
 export default defineComponent({
   components: { GoogleMap, Marker },
   props: {
-    lati: Number,
+    lat: Number,
     long: Number,
   },
   setup() {
     const center = { lat: 40, lng: -70 };
-
+    console.log(this);
+    if (this.lat) {
+      console.log("can read lat value");
+      center.lat = this.lat;
+    }
+    if (this.long) {
+      console.log("can read long value");
+      center.lng = this.long;
+    }
     return { center };
   },
 });

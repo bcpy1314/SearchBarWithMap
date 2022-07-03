@@ -1,15 +1,24 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld
     msg="Welcome to Your Vue.js App"
     @CustomEventInputChanged="updatePlace"
   ></HelloWorld>
-  <GoogleMap :lati="lat" :long="long" />
+
+  <GoogleMap
+    id="map"
+    api-key="AIzaSyC0_7qBQT6uvcgQ_zqcnO8KeFufZhbCDCo"
+    style="width: 100%; height: 500px"
+    :center="center"
+    :zoom="15"
+  >
+    <Marker :options="{ position: center }" />
+  </GoogleMap>
 </template>
 
 <script>
-import GoogleMap from "./components/GoogleMap.vue";
+//import GoogleMap from "./components/GoogleMap.vue";
 import HelloWorld from "./components/HelloWorld.vue";
+import { GoogleMap, Marker } from "vue3-google-map";
 
 export default {
   name: "App",
@@ -19,12 +28,14 @@ export default {
       place: "",
       lat: 40.689247,
       long: -74.044502,
+      center: { lat: 40.689247, lng: -74.044502 },
     };
   },
 
   components: {
     HelloWorld,
     GoogleMap,
+    Marker,
   },
 
   methods: {
@@ -44,9 +55,8 @@ export default {
           console.log("data", data);
           const latitude = data.results[0].geometry.location.lat;
           const longitude = data.results[0].geometry.location.lng;
-          this.lat = latitude;
-          this.long = longitude;
-          console.log({ latitude, longitude });
+          this.center = { lat: latitude, lng: longitude };
+          console.log(this.center);
         });
     },
   },
@@ -61,5 +71,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+#map {
+  margin-top: 100px;
 }
 </style>
