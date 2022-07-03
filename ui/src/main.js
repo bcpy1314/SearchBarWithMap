@@ -1,8 +1,10 @@
 import { createApp } from "vue";
 import App from "./App.vue";
+
 import VueGoogleMaps from "vue3-google-map";
 
 const app = createApp(App);
+
 app
   .use(VueGoogleMaps, {
     load: {
