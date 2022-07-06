@@ -9,7 +9,7 @@
     api-key="AIzaSyC0_7qBQT6uvcgQ_zqcnO8KeFufZhbCDCo"
     style="width: 100%; height: 500px"
     :center="center"
-    :zoom="15"
+    :zoom="5"
   >
     <Marker :options="{ position: center }" />
   </GoogleMap>
