@@ -32,13 +32,9 @@ export default {
           "Access-Control-Allow-Methods": "GET",
           "Access-Control-Allow-Headers": "Origin, Methods, Content-Type",
         });
-        let response = await axios.post(
-          "http://localhost:3000/graphql",
-          { query: '{suggestions(input:"' + this.input + '")}' },
-          headers
-        );
-        console.log(response.data.data.suggestions.length);
-        this.items = response.data.data.suggestions;
+        let response = await axios.post('http://localhost:3000/graphql', {query: '{state(name:"' + this.input + '") {name, latitude, longitude, state} }'}, headers)
+        const results = response.data.data.state;
+        this.items = results.map(result=>{return result.name;});
       } catch (error) {
         console.log(error);
       }
@@ -66,7 +62,7 @@ export default {
 }
 
 .place:hover {
-  background: yellow;
+  background: blue;
 }
 
 .option {
